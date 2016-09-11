@@ -1,0 +1,32 @@
+<project default="compile">
+    <target name="compile">
+        <mkdir dir="bin" />
+        <javac srcdir="src" destdir="bin" />
+    </target>
+
+    <target name="build-modeleditor">
+        <mkdir dir="bin" />
+        <javac srcdir="src" destdir="bin" />
+        <mkdir dir="build/jar" />
+        <jar destfile="build/jar/ModelEditor.jar" basedir="bin">
+            <manifest>
+                <attribute name="Main-Class" value="editor.Editor" />
+            </manifest>
+        </jar>
+        <java jar="build/jar/ModelEditor.jar" fork="true" />
+    </target>
+
+    <target name="jar">
+        <mkdir dir="build/jar/"/>
+        <jar destfile="build/jar/Atlas.jar" basedir="bin">
+            <manifest>
+                <attribute name="Main-Class" value="graphics.Window" />
+            </manifest>
+        </jar>
+    </target>
+    
+    <target name="run">
+        <java jar="build/jar/Atlas.jar" fork="true" />
+    </target>
+
+</project>
